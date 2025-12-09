@@ -98,7 +98,15 @@ DATABASES = {
         'PORT': os.getenv("DB_PORT"),
     }
 }
-
+# ---------------------------------------------------------
+# Add this block directly below the DATABASES definition
+# ---------------------------------------------------------
+if os.environ.get("DISABLE_DB", "0") == "1":
+    print("⚠️  DISABLE_DB=1 detected — using dummy database backend")
+    DATABASES["default"]["ENGINE"] = "django.db.backends.dummy"
+    DATABASES["default"]["HOST"] = ""
+    DATABASES["default"]["PORT"] = ""
+# ---------------------------------------------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
