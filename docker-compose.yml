@@ -1,3 +1,4 @@
+
 services:
   db:
     image: mysql:8.0
@@ -13,7 +14,7 @@ services:
       - db_data:/var/lib/mysql
 
   web:
-    image: notes-app:latest
+    image: "muralikrishna93/notes-app:latest"
     restart: always
     depends_on:
       - db
@@ -24,10 +25,6 @@ services:
       DB_NAME: notesdb
       DB_USER: notesuser
       DB_PASSWORD: notespwd
-
-      # ⬇️ Add this line to bypass the DB
-      DISABLE_DB: "1"
-
     working_dir: /app/backend
     command: python manage.py runserver 0.0.0.0:8000
 
