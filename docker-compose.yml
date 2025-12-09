@@ -14,7 +14,7 @@ services:
       - db_data:/var/lib/mysql
 
   web:
-    image: "notes-app:latest"
+    image: "muralikrishna93/notes-app:latest"
     restart: always
     depends_on:
       - db
